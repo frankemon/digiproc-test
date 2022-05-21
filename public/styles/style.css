@@ -1,0 +1,72 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  max-width: 800px;
+  margin: 0 auto;
+  font-family: "Lato", sans-serif;
+}
+
+.changelog p {
+  color: gray;
+  margin: 1rem 0;
+}
+
+.comment-container {
+  border: 1px solid gray;
+  border-radius: 5px;
+}
+
+.comment-container ul {
+  padding: 1rem;
+}
+
+.comment-container li {
+  list-style-type: none;
+  padding: 0.25rem 0;
+}
+
+.comment-user {
+  font-weight: 700;
+}
+
+.comment-summary {
+  font-size: 0.85rem;
+  padding: 0 1rem 1rem;
+  display: flex;
+  justify-content: space-between;
+}
+
+.comment-summary a {
+  color: black;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.comment-summary a:link {
+  color: black;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.comment-summary a:visited {
+  color: black;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.comment-summary a:hover {
+  color: black;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.comment-summary a:active {
+  color: black;
+  font-weight: 700;
+  text-decoration: none;
+}
