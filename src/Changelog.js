@@ -1,21 +1,23 @@
 import React, { Component } from "react";
+import changelogData from "./changelogData";
 
+const changelogPost = changelogData.post;
+const user = changelogData.user;
+const comment = changelogData.comment;
+
+console.log(changelogData.comments);
 class Changelog extends React.Component {
   render() {
     return (
       <div className="container">
         <div className="changelog">
           <h1>Changelog</h1>
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam
-            quaerat, voluptate et incidunt eaque quibusdam? Ea itaque labore
-            consequuntur recusandae explicabo.
-          </p>
+          <p>{changelogPost}</p>
         </div>
-        <div class="comment-container">
+        <div className="comment-container">
           <ul>
             <li>
-              <span className="comment-user">Molly M:</span> Donect vehicula
+              <span className="comment-user">{user}:</span> {comment}
             </li>
             <li>
               <span className="comment-user">Noah S: </span>Vestibulum ante
