@@ -32,7 +32,7 @@ const comments = [
   },
   {
     id: 5,
-    user: "Molly Marshall",
+    user: "Jake Thompson",
     comment:
       "Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?",
   },
@@ -50,25 +50,22 @@ const comments = [
   },
   {
     id: 8,
-    user: "Noah Simpsson",
+    user: "Kelly Lagan",
     comment: "Nam libero tempore, cum soluta nobis est eligendi.",
   },
   {
     id: 9,
-    user: "Arabella Ortega",
+    user: "Jake Thompson",
     comment:
       "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fuga, perferendis?.",
   },
   {
     id: 10,
     user: "Molly Marshall",
-    comment:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Id molestias veniam aliquid.",
+    comment: "Id veniam aliquid fuga tenetur voluptate qam illum?",
   },
 ];
 export default {
   post,
-  user,
   comments,
-  comment,
 };

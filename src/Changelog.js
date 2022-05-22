@@ -2,10 +2,33 @@ import React, { Component } from "react";
 import changelogData from "./changelogData";
 
 const changelogPost = changelogData.post;
-const user = changelogData.user;
-const comment = changelogData.comment;
+const commentsData = changelogData.comments;
+const comments = commentsData.map((comment) => (
+  <li>
+    <span className="comment-user">{comment.user}</span>: {comment.comment}
+  </li>
+));
 
-console.log(changelogData.comments);
+const visiblePosts = 3;
+let hiddenPosts = comments.length - visiblePosts;
+
+// Get all usernames
+// Filter duplicats or find unique names
+// Return to new variable/array, get its length
+
+// let totalUsers = commentsData.filter((user) => user === user).length;
+// console.log(totalUsers);
+
+// const unique = (value, index, self) => {
+//   return self.indexOf(value) === index;
+// };
+
+// let users = commentsData.filter((user) => user === user);
+// console.log(users);
+
+// const uniqueUsers = users.filter(unique);
+// console.log("users", uniqueUsers);
+
 class Changelog extends React.Component {
   render() {
     return (
@@ -15,46 +38,12 @@ class Changelog extends React.Component {
           <p>{changelogPost}</p>
         </div>
         <div className="comment-container">
-          <ul>
-            <li>
-              <span className="comment-user">{user}:</span> {comment}
-            </li>
-            <li>
-              <span className="comment-user">Noah S: </span>Vestibulum ante
-              ipsum
-            </li>
-            <li>
-              <span className="comment-user">Molly M:</span> Lorem ipsum
-            </li>
-            <li>
-              <span className="comment-user">Noah S: </span>Dolor sit amet
-            </li>
-            <li>
-              <span className="comment-user">Molly M:</span> Consectetur
-              adipisicing elit
-            </li>
-            <li>
-              <span className="comment-user">Arabella O:</span> Magnam quaerat
-              voluptate
-            </li>
-            <li>
-              <span className="comment-user">Molly M:</span> Et incidunt eaque
-            </li>
-            <li>
-              <span className="comment-user">Arabella O:</span> Quibusdam ea
-              itaque
-            </li>
-            <li>
-              <span className="comment-user">Molly M:</span> Labore consequuntur
-            </li>
-            <li>
-              <span className="comment-user">Molly M:</span> Recusandae
-              explicabo
-            </li>
-          </ul>
+          <ul>{comments}</ul>
           <div className="comment-summary">
             <div>
-              <p>+7 more comments from Molly, Arabella and 3 others</p>
+              <p>
+                +{hiddenPosts} more comments from Molly, Arabella and 3 others
+              </p>
             </div>
             <div>
               <a href="#">
