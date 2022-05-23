@@ -1,10 +1,9 @@
-const post =
-  "Magnam quaerat, voluptate et incidunt eaque quibusdam? Ea itaque labore consequuntur recusandae explicabo. Lorem ipsum dolor sit amet consectetur adipisicing elit.";
-
-const user = "Molly Marshall";
-
-const comment =
-  "Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet.";
+const changelogs = [
+  {
+    id: 1,
+    post: "Magnam quaerat, voluptate et incidunt eaque quibusdam? Ea itaque labore consequuntur recusandae explicabo. Lorem ipsum dolor sit amet consectetur adipisicing elit.",
+  },
+];
 
 const comments = [
   {
@@ -57,7 +56,7 @@ const comments = [
     id: 9,
     user: "Jake Thompson",
     comment:
-      "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fuga, perferendis?.",
+      "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fuga, perferendis?",
   },
   {
     id: 10,
@@ -66,6 +65,6 @@ const comments = [
   },
 ];
 export default {
-  post,
   comments,
+  changelogs,
 };

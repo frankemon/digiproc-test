@@ -1,54 +1,118 @@
 import React, { Component } from "react";
 import changelogData from "./changelogData";
 
-const changelogPost = changelogData.post;
 const commentsData = changelogData.comments;
-const comments = commentsData.map((comment) => (
-  <li>
-    <span className="comment-user">{comment.user}</span>: {comment.comment}
-  </li>
-));
+const firstThreeComments = commentsData.filter((item, index) => {
+  return index < 3;
+});
 
-const visiblePosts = 3;
-let hiddenPosts = comments.length - visiblePosts;
+const VISIBLE_POSTS = 3;
+let hiddenPosts = commentsData.length - VISIBLE_POSTS;
 
-// Get all usernames
-// Filter duplicats or find unique names
-// Return to new variable/array, get its length
+let uniqueUsers = [];
+const VISIBLE_USERS = 2;
+commentsData.forEach((item) => {
+  if (uniqueUsers.indexOf(item.user) <= -1) {
+    uniqueUsers.push(item.user);
+  }
+});
 
-// let totalUsers = commentsData.filter((user) => user === user).length;
-// console.log(totalUsers);
-
-// const unique = (value, index, self) => {
-//   return self.indexOf(value) === index;
-// };
-
-// let users = commentsData.filter((user) => user === user);
-// console.log(users);
-
-// const uniqueUsers = users.filter(unique);
-// console.log("users", uniqueUsers);
+let hiddenUsers = uniqueUsers.length - VISIBLE_USERS;
+const firstTwoUsers = uniqueUsers.filter((item, index) => {
+  return index > 2;
+});
 
 class Changelog extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      hiddenPosts: hiddenPosts,
+      firstUser: firstTwoUsers[0],
+      secondUser: firstTwoUsers[1],
+      hiddenUsers: hiddenUsers,
+      firstThreeComments: firstThreeComments,
+      allComments: commentsData,
+      toggleOn: false,
+      comments: firstThreeComments,
+    };
+
+    this.handleToggle = this.handleToggle.bind(this);
+  }
+
+  handleToggle() {
+    this.setState((prevState) => ({
+      toggleOn: !prevState.toggleOn,
+    }));
+  }
+
+  renderAllComments() {
+    this.state.comments.map((item) => (
+      <li key="id">
+        <span key="user" className="comment-user">
+          {item.user}:
+        </span>{" "}
+        {item.comment}
+      </li>
+    ));
+  }
+
+  renderThreeComments() {
+    this.state.firstThreeComments.map((item) => (
+      <li key="id">
+        <span key="user" className="comment-user">
+          {item.user}:
+        </span>{" "}
+        {item.comment}
+      </li>
+    ));
+  }
+
   render() {
     return (
       <div className="container">
         <div className="changelog">
           <h1>Changelog</h1>
-          <p>{changelogPost}</p>
+          {this.props.log}
         </div>
         <div className="comment-container">
-          <ul>{comments}</ul>
+          <ul>
+            {/* {this.state.toggleOn
+              ? this.renderAllComments
+              : this.renderThreeComments} */}
+
+            {this.state.toggleOn
+              ? commentsData.map((item) => (
+                  <li key="id">
+                    <span key="user" className="comment-user">
+                      {item.user}:
+                    </span>{" "}
+                    {item.comment}
+                  </li>
+                ))
+              : firstThreeComments.map((item) => (
+                  <li key="id">
+                    <span key="user" className="comment-user">
+                      {item.user}:
+                    </span>{" "}
+                    {item.comment}
+                  </li>
+                ))}
+          </ul>
           <div className="comment-summary">
             <div>
               <p>
-                +{hiddenPosts} more comments from Molly, Arabella and 3 others
+                {this.state.toggleOn
+                  ? " "
+                  : `+
+                ${this.state.hiddenPosts} more comments from
+                ${this.state.firstUser}, ${this.state.secondUser} and
+                ${this.state.hiddenUsers} others`}
               </p>
             </div>
             <div>
-              <a href="#">
-                <p>View full activity log</p>
-              </a>
+              <button onClick={this.handleToggle}>
+                {this.state.toggleOn ? "Show less" : "View full activity log"}
+              </button>
             </div>
           </div>
         </div>
