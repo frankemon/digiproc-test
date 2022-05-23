@@ -1,17 +1,22 @@
-import React, { Component } from "react";
-import Changelog from "./Changelog";
-import changelogData from "./changelogData";
+import React from "react";
+import Changelog from "./components/Changelog";
+import db from "./db";
 
-const changelogs = changelogData.changelogs;
-const comments = changelogData.comments;
-
-const log = changelogs.map((item) => item.post);
+const allChangelogs = db.changelogs;
+const comments = db.comments;
+const log = allChangelogs.map((item) => item.post);
 
 class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      log: log,
+      comments: comments,
+    };
+  }
   render() {
     return (
       <div>
-        DigiProc
         <Changelog log={log} comments={comments} />
       </div>
     );

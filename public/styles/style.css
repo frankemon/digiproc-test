@@ -9,6 +9,7 @@ body {
   max-width: 800px;
   margin: 0 auto;
   font-family: "Lato", sans-serif;
+  padding-top: 1rem;
 }
 
 .changelog p {
@@ -41,32 +42,29 @@ body {
   justify-content: space-between;
 }
 
-.comment-summary a {
+.comment-summary button {
   color: black;
   font-weight: 700;
   text-decoration: none;
+  border: none;
+  background: none;
+  cursor: pointer;
 }
 
-.comment-summary a:link {
-  color: black;
-  font-weight: 700;
-  text-decoration: none;
-}
+@media only screen and (max-width: 600px) {
+  body {
+    max-width: 350px;
+  }
 
-.comment-summary a:visited {
-  color: black;
-  font-weight: 700;
-  text-decoration: none;
-}
+  .comment-container {
+    margin: 0 0 1rem 0;
+  }
 
-.comment-summary a:hover {
-  color: black;
-  font-weight: 700;
-  text-decoration: none;
-}
+  .comment-summary {
+    flex-direction: column;
+  }
 
-.comment-summary a:active {
-  color: black;
-  font-weight: 700;
-  text-decoration: none;
+  .comment-summary p {
+    padding: 1rem 0;
+  }
 }
