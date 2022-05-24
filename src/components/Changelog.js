@@ -5,15 +5,12 @@ class Changelog extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      hiddenPosts: this.hiddenPosts,
-      firstUser: this.firstTwoUsers,
-      secondUser: this.secondUser,
-      hiddenUsers: this.hiddenUsers,
       firstThreeComments: this.firstThreeComments,
       allComments: this.comments,
       toggleOn: false,
       comments: this.firstThreeComments,
     };
+
     this.handleToggle = this.handleToggle.bind(this);
   }
 
@@ -29,7 +26,7 @@ class Changelog extends React.Component {
     });
 
     const VISIBLE_POSTS = 3;
-    this.state.hiddenPosts = this.props.comments.length - VISIBLE_POSTS;
+    const hiddenPosts = this.props.comments.length - VISIBLE_POSTS;
 
     let uniqueUsers = [];
     const VISIBLE_USERS = 2;
@@ -39,9 +36,9 @@ class Changelog extends React.Component {
       }
     });
 
-    this.state.hiddenUsers = uniqueUsers.length - VISIBLE_USERS;
+    const hiddenUsers = uniqueUsers.length - VISIBLE_USERS;
 
-    this.state.firstTwoUsers = uniqueUsers.filter((item, index) => {
+    const firstTwoUsers = uniqueUsers.filter((item, index) => {
       return index > 2;
     });
 
@@ -73,21 +70,31 @@ class Changelog extends React.Component {
                 {this.state.toggleOn
                   ? " "
                   : `+
-                ${this.state.hiddenPosts} more comments from
-                ${this.state.firstTwoUsers[0]}, ${this.state.firstTwoUsers[1]} and
-                ${this.state.hiddenUsers} others`}
+                ${hiddenPosts} more comments from
+                ${firstTwoUsers[0]}, ${firstTwoUsers[1]} and
+                ${hiddenUsers} others`}
               </p>
             </div>
             <div>
               <button onClick={this.handleToggle}>
                 {this.state.toggleOn ? (
-                  <p>
-                    Show less <FaArrowAltCircleUp />
-                  </p>
+                  <div className="button-inner">
+                    <div>Show less</div>
+                    <div>
+                      <div className="icon-container">
+                        <FaArrowAltCircleUp />
+                      </div>
+                    </div>
+                  </div>
                 ) : (
-                  <p>
-                    View full activity log <FaArrowAltCircleRight />
-                  </p>
+                  <div className="button-inner">
+                    <div>View full activity log </div>
+                    <div>
+                      <div className="icon-container">
+                        <FaArrowAltCircleRight />
+                      </div>
+                    </div>
+                  </div>
                 )}
               </button>
             </div>
