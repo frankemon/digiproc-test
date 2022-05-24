@@ -1,4 +1,5 @@
 import React from "react";
+import "./changelog.css";
 import { FaArrowAltCircleRight, FaArrowAltCircleUp } from "react-icons/fa";
 
 class Changelog extends React.Component {
